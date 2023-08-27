@@ -1,11 +1,11 @@
 .field {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: max(0.1rem, 0.25vw);
 }
 
 .row {
     display: flex;
     flex-direction: row;
-    gap: 0.25rem;
+    gap: max(0.1rem, 0.25vw);
 }

@@ -18,7 +18,6 @@ export const clearSelectedWords = createAction(ActionsType.CLEAR_SELECTED_WORDS)
 export const mainReducer = createReducer(initialState, {
     [addCell]: (state, action) => {
         state.selectedCells.push(action.payload);
-        console.log(action.payload)
         state.selectedCellsButID.push(action.payload.props.x + "_" + action.payload.props.y);
     },
     [addSelectedWord]: (state, action) => {

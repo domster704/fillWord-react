@@ -1,24 +1,64 @@
+:root {
+    --animation-selected-cell-duration: .1s;
+    --animation-selected-cell-rotation: -10deg;
+    --animation-selected-cell-width: 2.76rem;
+
+    --animation-cell-width: 3rem;
+    --animation-cell-font-size: 12pt;
+}
+
 .cell {
     display: flex;
-    width: 3rem;
-
+    width: var(--animation-cell-width);
     aspect-ratio: 1 / 1;
+
     justify-content: center;
     align-items: center;
 
     border-radius: 0.25rem;
     font-weight: 500;
-    font-size: 12pt;
+    font-size: var(--animation-cell-font-size);
     font-family: Arial, serif;
 
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .15);
+
+    transition: all ease .1s;
 }
 
 .cell:hover {
     cursor: pointer;
-    border-radius: 0.1rem;
+
+    background-color: #23ABDC;
+    animation: select-cell ease-in-out var(--animation-selected-cell-duration);
+    transform: rotate(var(--animation-selected-cell-rotation));
+
+    width: var(--animation-selected-cell-width);
+    height: var(--animation-selected-cell-width);
+    margin: calc((var(--animation-cell-width) - var(--animation-selected-cell-width)) / 2);
 }
 
 .selectCell {
     background-color: #23ABDC;
+    animation: select-cell var(--animation-selected-cell-duration);
+    transform: rotate(var(--animation-selected-cell-rotation));
+
+    width: var(--animation-selected-cell-width);
+    height: var(--animation-selected-cell-width);
+    margin: calc((var(--animation-cell-width) - var(--animation-selected-cell-width)) / 2);
+}
+
+@keyframes select-cell {
+    0% {
+        width: 3rem;
+        height: 3rem;
+        margin: 0;
+        transform: rotate(0);
+    }
+
+    100% {
+        width: 2.8rem;
+        height: 2.8rem;
+        margin: 0.1rem;
+        transform: rotate(-10deg);
+    }
 }

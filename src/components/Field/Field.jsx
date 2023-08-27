@@ -1,7 +1,7 @@
 import React from "react";
-import FillWordMatrix from "../../logic/FillWord";
-
 import s from './Field.module.css';
+
+import FillWordMatrix from "../../logic/FillWord";
 import {getRandomColor} from "../../logic/extra";
 import {wordDictionary} from "../../logic/Words";
 import {RUSSIAN_ALPHABET} from "../../logic/RussianAlphabet";

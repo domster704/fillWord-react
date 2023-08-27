@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./Cell.module.css";
+
 import {connect} from "react-redux";
 
 class Cell extends React.Component {
