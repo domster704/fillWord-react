@@ -48,7 +48,7 @@ class Cell extends React.Component {
         return (
             <div id='cell'
                  className={s.cell + ' ' + (this.state.x + "_" + this.state.y) + ' ' + (this.state.isSelected ? s.selectCell : '')}
-                 style={(this.state.isGuessed) ? {backgroundColor: this.props.color} : {}}>{this.state.letter + " | " + this.state.sequenceNumber}</div>
+                 style={(this.state.isGuessed) ? {backgroundColor: this.props.color} : {}}>{this.state.letter}</div>
         )
     }
 }

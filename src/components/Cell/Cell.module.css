@@ -1,27 +1,26 @@
 :root {
     --animation-selected-cell-duration: .1s;
     --animation-selected-cell-rotation: -10deg;
-    --animation-selected-cell-width: 2.76rem;
+    --animation-selected-cell-width: 3.76rem;
 
-    --animation-cell-width: 3rem;
-    --animation-cell-font-size: 12pt;
+    --cell-width: 4rem;
+    --cell-font-size: calc(var(--cell-width) / 2);
 }
 
 .cell {
     display: flex;
-    width: var(--animation-cell-width);
+    width: var(--cell-width);
     aspect-ratio: 1 / 1;
 
     justify-content: center;
     align-items: center;
 
     border-radius: 0.25rem;
-    font-weight: 500;
-    font-size: var(--animation-cell-font-size);
-    font-family: Arial, serif;
+    font-weight: 400;
+    font-size: var(--cell-font-size);
 
-    border: 1px solid rgba(0, 0, 0, .15);
-
+    border: 1px solid rgba(0, 0, 0, .2);
+    color: #333333;
     transition: all ease .1s;
 }
 
@@ -34,7 +33,7 @@
 
     width: var(--animation-selected-cell-width);
     height: var(--animation-selected-cell-width);
-    margin: calc((var(--animation-cell-width) - var(--animation-selected-cell-width)) / 2);
+    margin: calc((var(--cell-width) - var(--animation-selected-cell-width)) / 2);
 }
 
 .selectCell {
@@ -44,21 +43,21 @@
 
     width: var(--animation-selected-cell-width);
     height: var(--animation-selected-cell-width);
-    margin: calc((var(--animation-cell-width) - var(--animation-selected-cell-width)) / 2);
+    margin: calc((var(--cell-width) - var(--animation-selected-cell-width)) / 2);
 }
 
 @keyframes select-cell {
     0% {
-        width: 3rem;
-        height: 3rem;
+        width: var(--cell-width);
+        height: var(--cell-width);
         margin: 0;
         transform: rotate(0);
     }
 
     100% {
-        width: 2.8rem;
-        height: 2.8rem;
-        margin: 0.1rem;
-        transform: rotate(-10deg);
+        width: var(--animation-selected-cell-width);
+        height: var(--animation-selected-cell-width);
+        margin: calc((var(--cell-width) - var(--animation-selected-cell-width)) / 2);
+        transform: rotate(var(--animation-selected-cell-rotation));
     }
 }
