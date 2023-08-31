@@ -1,9 +1,10 @@
 :root {
     --animation-selected-cell-duration: .1s;
     --animation-selected-cell-rotation: -10deg;
-    --animation-selected-cell-width: 3.76rem;
+    /*Зависит от количества клеток на поле*/
+    --cell-width: max(2rem, 2.15vw + 1.85rem);
+    --animation-selected-cell-width: calc(var(--cell-width) - 0.26rem);
 
-    --cell-width: 4rem;
     --cell-font-size: calc(var(--cell-width) / 2);
 }
 

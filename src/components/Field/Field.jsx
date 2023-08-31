@@ -70,13 +70,23 @@ class Field extends React.Component {
         this.props.addCell(cell);
     }
 
-    handlerMouseDown() {
+    handlerTouchMove(event) {
+        let cellHTML = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+        if (!this.state.isMouseDown || cellHTML.id !== 'cell') return;
+
+        let [x, y] = cellHTML.classList[1].split("_").map(el => Number(el));
+        if (this.props.selectedCellsButID.indexOf(`${x}_${y}`) !== -1) return;
+        let cell = this.state.rowsHTML[x][y];
+        this.props.addCell(cell);
+    }
+
+    handlerMouseDown(event) {
         this.setState({
             isMouseDown: true
         });
     }
 
-    handlerMouseUp() {
+    handlerMouseUp(event) {
         if (this.state.isMouseDown) {
             if (wordChecker(this.props.selectedCells)) {
                 console.log(this.props.selectedCells[0].props.word)
@@ -95,7 +105,10 @@ class Field extends React.Component {
         return (
             <div className={s.field} onMouseMove={e => this.handlerMouseMove(e)}
                  onMouseDown={e => this.handlerMouseDown(e)}
-                 onMouseUp={e => this.handlerMouseUp(e)}>{
+                 onMouseUp={e => this.handlerMouseUp(e)}
+                 onTouchMove={e => this.handlerTouchMove(e)}
+                 onTouchStart={e => this.handlerMouseDown(e)}
+                 onTouchEnd={e => this.handlerMouseUp(e)}>{
                 Object.keys(this.state.rowsHTML).map(row => {
                     return <div className={s.row} key={row} id='row'>{
                         Object.keys(this.state.rowsHTML[row]).map(col => {

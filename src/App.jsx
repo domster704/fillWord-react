@@ -4,7 +4,7 @@ import Field from './components/Field/Field'
 function App() {
     return (
         <div className="App">
-            <Field rows={10} cols={15}/>
+            <Field rows={8} cols={8}/>
         </div>
     );
 }

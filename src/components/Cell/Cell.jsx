@@ -61,8 +61,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cell);
+export default connect(mapStateToProps)(Cell);
